@@ -87,7 +87,6 @@ a {
 
 .container,
 .header,
-.hero,
 .stats {
     width: min(var(--max-width), calc(100% - 80px));
     margin: auto;
@@ -183,6 +182,18 @@ a {
 /* Área principal da capa */
 
 .hero {
+
+    /*
+       LARGURA TOTAL, ENCOSTANDO NAS BORDAS
+
+       Diferente do .header e do .stats, o .hero NÃO usa
+       a largura máxima (--max-width). Ele ocupa 100% da
+       tela, igual à foto de fundo no site oficial.
+
+       Quem limita a largura do TEXTO é o ".container"
+       colocado dentro do hero no index.html.
+    */
+    width: 100%;
 
     /* Permite posicionar a imagem dentro da seção */
     position: relative;
@@ -1198,7 +1209,6 @@ a {
 
     .container,
     .header,
-    .hero,
     .stats {
         width: calc(100% - 32px);
     }
