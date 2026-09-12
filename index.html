@@ -9,6 +9,8 @@
   <meta name="description" content="Recanto da Serenidade">
   <title>Recanto da Serenidade</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cloudflare.com">
+
 </head>
 
 
@@ -95,63 +97,51 @@
 
 
       <!--
-        CONTAINER INTERNO DA CAPA
+        FAIXA FINA NO TOPO
 
-        A imagem de fundo (.hero-bg) e a camada (.hero-overlay)
-        encostam nas bordas da tela, igual ao site oficial.
-
-        Este ".container" é quem limita a LARGURA DO TEXTO,
-        alinhando-o com o restante do conteúdo do site
-        (mesma margem usada no cabeçalho e nas outras seções).
+        Cria a linha sólida (mesma cor do cabeçalho)
+        que separa o header da foto, igual ao print.
       -->
-      <div class="container">
-
-        <!-- CONTEÚDO ESCRITO DA CAPA -->
-        <div class="hero-content">
-
-          <!--
-            TÍTULO PRINCIPAL
-
-            ALTERE O TEXTO AQUI.
-          -->
-          <h1>
-            O Caminho para<br>
-            a recuperação<br>
-            começa aqui.
-          </h1>
+      <div class="hero-topbar"></div>
 
 
-          <!--
-            FRASE DA CAPA
+      <!--
+        CONTEÚDO ESCRITO DA CAPA
 
-            ALTERE O TEXTO ENTRE <p> E </p>.
-          -->
-          <p>
-            “A influência de um lugar pode se estender
-            para além de suas paredes físicas”
-          </p>
+        IMPORTANTE:
+        Este bloco fica direto dentro do .hero (sem nenhum
+        ".container" ao redor). O alinhamento com a logo vem
+        do próprio .hero-content, que usa "padding: 60px 10%"
+        no style.css — os mesmos 10% de espaçamento lateral
+        usados no .header. Assim o título começa exatamente
+        na mesma linha vertical da logo.
+      -->
+      <div class="hero-content">
+
+        <!--TÍTULO PRINCIPAL -->
+        <h1>
+          O Caminho para<br>
+          a recuperação<br>
+          começa aqui.
+        </h1>
 
 
-          <!--
-            BOTÃO "SAIBA MAIS"
+        <!--FRASE DA CAPA-->
+        <p>
+          “A influência de um lugar pode se estender
+          para além de suas paredes físicas”
+        </p>
 
-            ALTERE o texto entre <a> e </a>
-            para mudar o nome do botão.
 
-            ALTERE href="" para mudar o destino.
-
-            Atualmente abre o WhatsApp.
-          -->
-          <a
-            class="button"
-            href="https://wa.me/5532998701897"
-            target="_blank"
-            rel="noopener"
-          >
-            Saiba mais
-          </a>
-
-        </div>
+        <!-- BOTÃO "SAIBA MAIS" -->
+        <a
+          class="button"
+          href="https://wa.me/5532998701897"
+          target="_blank"
+          rel="noopener"
+        >
+          Saiba mais
+        </a>
 
       </div>
 
@@ -159,9 +149,7 @@
 
 
 
-    <!-- =========================================================
-         SEÇÃO 2 — NÚMEROS / ESTATÍSTICAS
-         ========================================================= -->
+    <!-- SEÇÃO 2 — NÚMEROS / ESTATÍSTICAS -->
 
     <section class="stats">
 
@@ -170,15 +158,7 @@
 
       <div>
 
-        <!--
-          ALTERE O NÚMERO AQUI
-          Exemplo: +500
-        -->
         <strong>+350</strong>
-
-        <!--
-          ALTERE A DESCRIÇÃO AQUI
-        -->
         <p>
           Residentes já foram<br>
           internados na casa.
@@ -192,14 +172,7 @@
 
       <div>
 
-        <!--
-          ALTERE O NÚMERO AQUI
-        -->
         <strong>1.400</strong>
-
-        <!--
-          ALTERE A DESCRIÇÃO AQUI
-        -->
         <p>
           Impacto direto em<br>
           1.400 pessoas.
@@ -211,9 +184,9 @@
 
 
 
-    <!-- =========================================================
+    <!-- 
          SEÇÃO 3 — QUEM SOMOS
-         ========================================================= -->
+         -->
 
     <!--
       id="quem-somos"
@@ -228,10 +201,7 @@
 
       <div class="about-text">
 
-        <!--
-          TÍTULO DA SEÇÃO
-
-          ALTERE AQUI.
+        <!--TÍTULO DA SEÇÃO
         -->
         <h2>
           Novos passos para<br>
@@ -239,42 +209,21 @@
         </h2>
 
 
-        <!--
-          PRIMEIRO PARÁGRAFO
-
-          ALTERE AQUI para modificar o texto institucional.
-        -->
+        <!-- PRIMEIRO PARÁGRAFO -->
         <p>
           O Recanto da Serenidade é uma Organização da Sociedade
           Civil (OSC) que se dedica ao tratamento da dependência
           química. No tratamento oferecido, utiliza-se o método
           Minnesota, que consiste nos 12 passos da recuperação.
-        </p>
-
-
-        <!-- SEGUNDO PARÁGRAFO -->
-
-        <p>
           A equipe multidisciplinar é composta por terapeutas
           especializados em dependência química, monitores,
           assistente social, entre outros.
-        </p>
-
-
-        <!-- TERCEIRO PARÁGRAFO -->
-
-        <p>
           Fundada em 2020, localiza-se no condomínio Monte Verde,
           na Rod. Miguel Batista (BR 265), em São João del-Rei, MG.
         </p>
 
 
-        <!--
-          BOTÃO/LINK "FALE CONOSCO"
-
-          ALTERE href="" para trocar o destino.
-          Atualmente abre o WhatsApp.
-        -->
+        <!-- BOTÃO/LINK "FALE CONOSCO" -->
 
         <a
           class="text-link"
@@ -282,6 +231,7 @@
           target="_blank"
           rel="noopener"
         >
+<i class="fa-brands fa-whatsapp"></i>
           Fale Conosco
         </a>
 
@@ -292,12 +242,11 @@
       <!--
         IMAGEM DA SEÇÃO QUEM SOMOS
 
-        ALTERE src="" para trocar a imagem.
       -->
 
       <img
         class="rounded-image"
-        src="https://recantodaserenidade.com.br/_assets/v11/4fc33ff9b9e7de5764fa033dcf3a2aec0168c0ed.png"
+        src="midia/entrada.png"
         alt="Recanto da Serenidade"
       >
 
