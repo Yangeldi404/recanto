@@ -101,10 +101,11 @@ a {
 /* Área inteira do cabeçalho */
 .header {
     /* Altura do cabeçalho */
-    height: 105px;
+    height: 100px;
+    width: 100%;
 
     /* Cor de fundo off-white igual à foto */
-    background-color: #fcf9f6;
+    background-color: #fef9f6;
 
     /* Coloca logo e menu lado a lado */
     display: flex;
@@ -116,7 +117,7 @@ a {
     justify-content: space-between;
 
     /* Espaço interno para não colar nas bordas da tela */
-    padding: 0 4%;
+    padding: 0 10%;
 }
 
 
@@ -124,8 +125,8 @@ a {
    LOGO
 */
 .brand img {
-    width: 75px;
-    height: 75px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
 }
 
@@ -134,10 +135,12 @@ a {
    MENU PRINCIPAL
 */
 .nav {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     display: flex;
-    gap: 40px;
+    gap: 50px;
     font-size: 16px;
-    font-weight: 600; 
+    font-weight: 500;
+    color: #1a1a1a;
 }
 
 /* Estilo dos links do menu */
@@ -172,244 +175,167 @@ a {
     opacity: .55;
 }
 
-
-
 /* 
    HERO / CAPA PRINCIPAL
 */
 
-
 /* Área principal da capa */
-
 .hero {
-
-    /*
-       LARGURA TOTAL, ENCOSTANDO NAS BORDAS
-
-       Diferente do .header e do .stats, o .hero NÃO usa
-       a largura máxima (--max-width). Ele ocupa 100% da
-       tela, igual à foto de fundo no site oficial.
-
-       Quem limita a largura do TEXTO é o ".container"
-       colocado dentro do hero no index.html.
-    */
     width: 100%;
-
-    /* Permite posicionar a imagem dentro da seção */
     position: relative;
-
-    /* Altura da capa */
-    height: 470px;
-
-    /* Espaço acima da capa */
-    margin-top: 10px;
-
-    /* Impede que elementos ultrapassem a capa */
+    min-height: 470px;
+    margin-top: 0px;
     overflow: hidden;
+    background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(253, 251, 249) 100%);
+    
+    /* 
+       CORREÇÃO DE ALINHAMENTO VERTICAL:
+       Ativa o flexbox para que o conteúdo interno possa se centralizar na altura do bloco.
+    */
+    display: flex;
+    align-items: center;
 }
-
 
 /* 
    IMAGEM DE FUNDO DA CAPA
-
-   A imagem é definida no index.html.
-
-   Esta regra determina como ela ocupa o espaço.
-
-   object-fit: cover
-   = preenche toda a área sem deformar a imagem.
 */
-
 .hero-bg {
     position: absolute;
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
+    z-index: 0;
 }
-
 
 /* 
    CAMADA SOBRE A IMAGEM
 
-   Cria o degradê branco sobre a imagem.
-
-   Se quiser alterar o efeito da capa,
-   mexa principalmente nos valores rgba abaixo.
+   CORRIGIDO:
+   Agora o degradê vai da ESQUERDA para a DIREITA, igual ao print.
+   Fica bem branco/opaco atrás do texto e some quase todo perto
+   dos 60-65% da largura, deixando o lado direito da foto (as
+   palmeiras) bem visível e colorido.
 */
-
 .hero-overlay {
     position: absolute;
-
-    /* Ocupa toda a área */
     inset: 0;
-
+    z-index: 1;
     background: linear-gradient(
-        90deg,
+        to right,
+        rgba(255,255,255,0.8) 0%,
+        rgba(255,255,255,0.7) 30%,
+        rgba(255,255,255,0.35) 55%,
 
-        /* Branco mais forte no lado esquerdo */
-        rgba(255,255,255,.84),
-
-        /* Branco mais transparente no meio */
-        rgba(255,255,255,.18) 65%,
-
-        /* Transparente no lado direito */
-        rgba(255,255,255,0)
     );
 }
 
 
 /* 
-   CONTEÚDO DA CAPA
+   FAIXA FINA NO TOPO
 
-   Controla a posição do título, frase e botão.
+   Linha sólida, mesma cor do cabeçalho (#fef9f6),
+   separando o header da foto — visível no print.
+
+   Se quiser mudar a espessura, altere "height".
 */
-
-.hero-content {
-    position: relative;
-
-    /* Coloca o conteúdo acima da imagem/degradê */
-    z-index: 1;
-
-    /* Largura máxima do texto */
-    max-width: 650px;
-
-    /*
-       Espaçamento:
-
-       52px = distância do topo
-       0    = direita
-       0    = baixo
-       92px = esquerda
-    */
-    padding: 52px 0 0 92px;
+.hero-topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: #fef9f6;
+    z-index: 2;
 }
 
+/* 
+   CONTEÚDO DA CAPA
+   Controla a posição do título, frase e botão.
+*/
+.hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+
+    padding: 60px 10%; 
+    margin-top: auto;
+    margin-bottom: auto;
+}
 
 /* 
    TÍTULO PRINCIPAL DA CAPA
-
-   Para aumentar/diminuir o título:
-   altere font-size.
-
-   Para mudar o espaçamento entre linhas:
-   altere line-height.
 */
-
 .hero h1 {
     margin: 0 0 18px;
+    font-size: 65px;
+    line-height: 1.05;
+    font-weight: 700;
+    color: #1a1a1a; 
 
-    font-size: 55px;
-
-    line-height: 1.02;
+    max-width: 650px; 
 }
 
 
 /* 
    FRASE DA CAPA
 */
-
 .hero p {
-
-    /* Largura máxima da frase */
     max-width: 420px;
-
-    /* Espaço abaixo da frase */
     margin-bottom: 30px;
-
-    /* Cor da frase */
-    color: var(--red);
-
-    /* Tamanho */
-    font-size: 14px;
-
-    /* Espaçamento entre linhas */
+    color: var(--red); 
+    font-size: 16px;
     line-height: 1.45;
 }
 
-
 /* 
    BOTÃO "SAIBA MAIS"
-
-   CORRIGIDO:
-   No print do site real, o botão é vermelho
-   com o texto branco e em negrito — e não
-   branco com texto cinza como estava antes.
 */
-
 .button {
-
-    /* Largura do botão */
-    width: 135px;
-
-    /* Altura */
-    height: 42px;
-
-    /* Permite centralizar o texto */
+    width: 180px;
+    height: 70px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    /* Arredondamento */
     border-radius: 24px;
-
-    /* Fundo vermelho, igual ao print */
     background: var(--red);
-
-    /* Texto branco */
     color: #fff;
-
-    /* Tamanho */
-    font-size: 14px;
-
-    /* Deixa o texto em negrito, como no print */
+    font-size: 20px;
     font-weight: 700;
-
-    /* Transição suave ao passar o mouse */
+    text-decoration: none; 
     transition: background-color .2s;
 }
 
-/* Escurece um pouco o vermelho ao passar o mouse */
+/* Mudança suave ao passar o mouse */
 .button:hover {
     background: #e01414;
 }
 
 
 
-/* 
-   ESTATÍSTICAS
-*/
 
-
-/* Área dos números +350 e 1.400 */
+/* ESTATÍSTICAS*/
 
 .stats {
-
+    
+    background-color: #fef9f6;
+    width: 100%;
+    height: 120px;
     /* Coloca os dois blocos lado a lado */
     display: flex;
 
     /* Espaço entre eles */
     gap: 105px;
 
-    /*
-       Espaçamento:
-
+    /* Espaçamento:
        15px = topo
        0    = laterais
        100px = inferior
     */
-    padding: 15px 0 100px;
+    padding: 15px 10%; 
 }
 
 
-/* 
-   NÚMEROS DAS ESTATÍSTICAS
-
-   Exemplo:
-   +350
-   1.400
-*/
+/* NÚMEROS DAS ESTATÍSTICAS */
 
 .stats strong {
     display: block;
@@ -418,10 +344,10 @@ a {
     color: var(--red);
 
     /* Tamanho */
-    font-size: 27px;
+    font-size: 35px;
 
     /* Peso normal */
-    font-weight: 400;
+    font-weight: 500;
 }
 
 
@@ -430,7 +356,7 @@ a {
 .stats p {
     color: var(--gray);
 
-    font-size: 12px;
+    font-size: 15px;
 
     line-height: 1.55;
 }
@@ -440,129 +366,141 @@ a {
 /* 
    SEÇÕES GERAIS
 */
-
-
+ 
+ 
 /*
    Todas as áreas que possuem class="section"
    recebem este espaçamento.
 */
-
+ 
 .section {
     padding: 90px 0;
 }
-
-
+ 
+ 
 /* 
    TÍTULOS CENTRALIZADOS
 */
-
+ 
 .center-title {
-
+ 
     /* Espaço abaixo do título */
     margin: 0 0 70px;
-
+ 
     /* Centraliza */
     text-align: center;
-
+ 
     /* Tamanho */
     font-size: 39px;
 }
-
-
-
+ 
+ 
+ 
 /* 
    QUEM SOMOS
 */
-
-
+ 
+ 
 /*
    Organiza texto + imagem em duas colunas.
-
+ 
    1.15fr = coluna do texto
    .85fr  = coluna da imagem
 */
-
+ 
 .about {
     display: grid;
-
-    grid-template-columns: 1.15fr .85fr;
-
+ 
+    grid-template-columns: 2.15fr .85fr;
+ 
     /* Alinhamento vertical */
     align-items: center;
-
+ 
     /* Espaço entre texto e imagem */
-    gap: 80px;
+    gap: 0px;
 }
-
-
+ 
+ 
 /* 
    TÍTULO "QUEM SOMOS"
 */
-
+ 
 .about h2 {
-    margin: 0 0 25px;
-
-    font-size: 39px;
-
+    margin: 0 200px 25px;
+ 
+    font-size: 50px;
+ 
     line-height: 1.08;
 }
-
-
+ 
+ 
 /* 
    TEXTOS DE "QUEM SOMOS" E SERVIÇOS
 */
-
+ 
 .about p,
 .service p {
-
+ 
     /* Limita a largura do texto */
     max-width: 600px;
-
+    margin: 0 200px 25px;
     color: var(--gray);
-
-    font-size: 14px;
-
+    font-size: 16px;
+ 
     line-height: 1.6;
 }
-
-
+ 
+ 
 /* 
    IMAGENS ARREDONDADAS
-
+ 
    Usada nas imagens de:
    - Quem Somos
    - Serviços
 */
-
+ 
 .rounded-image {
-
+ 
     /* Ocupa toda a largura disponível */
+    margin: 0 0 25px;
     width: 100%;
-
-    /* Altura */
-    height: 385px;
-
+    height: 500px;
+    aspect-ratio: 4 / 5;
+    
     /* Faz a imagem preencher sem deformar */
     object-fit: cover;
-
+ 
     /* Cantos arredondados */
     border-radius: 20px;
 }
-
-
+ 
+ 
 /* 
    LINKS "FALE CONOSCO"
 */
-
+ 
 .text-link {
-    display: inline-block;
-
-    margin-top: 25px;
-
-    color: var(--light-gray);
-
-    font-size: 14px;
+    margin: 0 200px 25px;
+    width: 180px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    background: var(--red);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none; 
+    transition: background-color .2s;
 }
+
+/* Mudança suave ao passar o mouse */
+.button:hover {
+    background: #e01414;
+}
+}
+ 
 
 
 
