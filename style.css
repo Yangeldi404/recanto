@@ -1,47 +1,19 @@
-/*
-
-   - Cores
-   - Tamanhos
-   - Espaçamentos
-   - Fontes
-   - Imagens
-   - Posicionamento
-   - Responsividade para celular
-
-*/
-
-
-/* CONFIGURAÇÕES GERAIS */
+/* ============================================================
+   CONFIGURAÇÕES GERAIS
+============================================================ */
 
 :root {
 
-    /* 
-       CORES PRINCIPAIS DO SITE
-
-       Para alterar uma cor, mude apenas o valor aqui.
-
-       Exemplo:
-       --red: #ff0000;
-
-       Depois, todos os elementos que usam var(--red)
-       serão alterados automaticamente.
-    */
-
     --red: #ff1717;
 
-    /* Cinza usado principalmente nos textos */
     --gray: #555;
 
-    /* Cinza claro usado em links e detalhes */
     --light-gray: #aaa;
 
-    /* Cor das bordas */
     --border: #ddd;
 
-    /* Largura máxima do conteúdo do site */
     --max-width: 1160px;
 }
-
 
 
 * {
@@ -54,30 +26,16 @@ html {
 }
 
 
-/* 
-   CONFIGURAÇÃO PRINCIPAL DO BODY
-*/
-
 body {
     margin: 0;
 
-    /* Fundo geral do site */
     background: #fff;
 
-    /* Cor padrão dos textos */
     color: #171717;
 
-    /* Fonte principal */
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
-/* 
-   LINKS
-
-   Remove o sublinhado padrão dos links.
-
-*/
 
 a {
     color: inherit;
@@ -93,267 +51,294 @@ a {
 }
 
 
-
-/* 
+/* ============================================================
    CABEÇALHO
-*/
+============================================================ */
 
-/* Área inteira do cabeçalho */
 .header {
-    /* Altura do cabeçalho */
+
     height: 100px;
+
     width: 100%;
 
-    /* Cor de fundo off-white igual à foto */
     background-color: #fef9f6;
 
-    /* Coloca logo e menu lado a lado */
     display: flex;
 
-    /* Alinha verticalmente no centro */
     align-items: center;
 
-    /* Logo de um lado e menu do outro */
     justify-content: space-between;
 
-    /* Espaço interno para não colar nas bordas da tela */
     padding: 0 10%;
 }
 
 
-/* 
-   LOGO
-*/
+/* LOGO */
+
 .brand img {
+
     width: 90px;
+
     height: 90px;
+
     object-fit: contain;
 }
 
 
-/* 
-   MENU PRINCIPAL
-*/
+/* MENU */
+
 .nav {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    font-family:
+        'Inter',
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
     display: flex;
+
     gap: 50px;
+
     font-size: 16px;
+
     font-weight: 500;
+
     color: #1a1a1a;
 }
 
-/* Estilo dos links do menu */
+
 .nav a {
+
     text-decoration: none;
-    
-    /* Tom de preto bem escuro e nítido */
-    color: #1a1a1a; 
-}
 
+    color: #2b2b2b;
 
-/* Estilo padrão para os links do menu */
-.nav a {
-    text-decoration: none;
-    color: #2b2b2b; /*  */
-}
-
-
-
-/* 
-   EFEITO AO PASSAR O MOUSE NO MENU
-
-   opacity .55 = fica parcialmente transparente.
-
-*/
-
-.nav a {
     transition: opacity .2s;
 }
 
+
 .nav a:hover {
+
     opacity: .55;
 }
 
-/* 
-   HERO / CAPA PRINCIPAL
-*/
 
-/* Área principal da capa */
+/* ============================================================
+   HERO
+============================================================ */
+
 .hero {
+
     width: 100%;
+
     position: relative;
+
     min-height: 470px;
-    margin-top: 0px;
+
+    margin-top: 0;
+
     overflow: hidden;
-    background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(253, 251, 249) 100%);
-    
-    /* 
-       CORREÇÃO DE ALINHAMENTO VERTICAL:
-       Ativa o flexbox para que o conteúdo interno possa se centralizar na altura do bloco.
-    */
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgb(255, 255, 255) 0%,
+            rgb(253, 251, 249) 100%
+        );
+
     display: flex;
+
     align-items: center;
 }
 
-/* 
-   IMAGEM DE FUNDO DA CAPA
-*/
+
+/* IMAGEM */
+
 .hero-bg {
+
     position: absolute;
+
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
+
     z-index: 0;
 }
 
-/* 
-   CAMADA SOBRE A IMAGEM
 
-   CORRIGIDO:
-   Agora o degradê vai da ESQUERDA para a DIREITA, igual ao print.
-   Fica bem branco/opaco atrás do texto e some quase todo perto
-   dos 60-65% da largura, deixando o lado direito da foto (as
-   palmeiras) bem visível e colorido.
-*/
+/* SOBREPOSIÇÃO */
+
 .hero-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(
-        to right,
-        rgba(255,255,255,0.8) 0%,
-        rgba(255,255,255,0.7) 30%,
-        rgba(255,255,255,0.35) 55%,
 
-    );
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            to right,
+            rgba(255,255,255,0.8) 0%,
+            rgba(255,255,255,0.7) 30%,
+            rgba(255,255,255,0.35) 55%,
+            rgba(255,255,255,0) 70%
+        );
 }
 
 
-/* 
-   FAIXA FINA NO TOPO
+/* FAIXA SUPERIOR */
 
-   Linha sólida, mesma cor do cabeçalho (#fef9f6),
-   separando o header da foto — visível no print.
-
-   Se quiser mudar a espessura, altere "height".
-*/
 .hero-topbar {
+
     position: absolute;
+
     top: 0;
+
     left: 0;
+
     right: 0;
+
     height: 14px;
+
     background: #fef9f6;
+
     z-index: 2;
 }
 
-/* 
-   CONTEÚDO DA CAPA
-   Controla a posição do título, frase e botão.
-*/
+
+/* CONTEÚDO */
+
 .hero-content {
+
     position: relative;
+
     z-index: 3;
+
     width: 100%;
 
-    padding: 60px 10%; 
+    padding: 60px 10%;
+
     margin-top: auto;
+
     margin-bottom: auto;
 }
 
-/* 
-   TÍTULO PRINCIPAL DA CAPA
-*/
-.hero h1 {
-    margin: 0 0 18px;
-    font-size: 65px;
-    line-height: 1.05;
-    font-weight: 700;
-    color: #1a1a1a; 
 
-    max-width: 650px; 
+/* TÍTULO */
+
+.hero h1 {
+
+    margin: 0 0 18px;
+
+    font-size: 65px;
+
+    line-height: 1.05;
+
+    font-weight: 700;
+
+    color: #1a1a1a;
+
+    max-width: 650px;
 }
 
 
-/* 
-   FRASE DA CAPA
-*/
+/* FRASE */
+
 .hero p {
+
     max-width: 420px;
-    margin-bottom: 30px;
-    color: var(--red); 
+
+    margin: 0 0 30px;
+
+    color: var(--red);
+
     font-size: 16px;
+
     line-height: 1.45;
 }
 
-/* 
-   BOTÃO "SAIBA MAIS"
-*/
+
+/* BOTÃO */
+
 .button {
+
     width: 180px;
+
     height: 70px;
+
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
+
     border-radius: 24px;
+
     background: var(--red);
+
     color: #fff;
+
     font-size: 20px;
+
     font-weight: 700;
-    text-decoration: none; 
+
+    text-decoration: none;
+
     transition: background-color .2s;
 }
 
-/* Mudança suave ao passar o mouse */
+
 .button:hover {
+
     background: #e01414;
 }
 
 
-
-
-/* ESTATÍSTICAS*/
+/* ============================================================
+   ESTATÍSTICAS
+============================================================ */
 
 .stats {
-    
+
     background-color: #fef9f6;
+
     width: 100%;
+
     height: 120px;
-    /* Coloca os dois blocos lado a lado */
+
     display: flex;
 
-    /* Espaço entre eles */
     gap: 105px;
 
-    /* Espaçamento:
-       15px = topo
-       0    = laterais
-       100px = inferior
-    */
-    padding: 15px 10%; 
+    padding: 15px 10%;
 }
 
 
-/* NÚMEROS DAS ESTATÍSTICAS */
+/* NÚMEROS */
 
 .stats strong {
+
     display: block;
 
-    /* Cor vermelha */
     color: var(--red);
 
-    /* Tamanho */
     font-size: 35px;
 
-    /* Peso normal */
     font-weight: 500;
 }
 
 
-/* Texto abaixo dos números */
+/* TEXTO */
 
 .stats p {
+
     color: var(--gray);
 
     font-size: 15px;
@@ -362,218 +347,177 @@ a {
 }
 
 
-
-/* 
+/* ============================================================
    SEÇÕES GERAIS
-*/
- 
- 
-/*
-   Todas as áreas que possuem class="section"
-   recebem este espaçamento.
-*/
- 
+============================================================ */
+
 .section {
+
     padding: 90px 0;
 }
- 
- 
-/* 
-   TÍTULOS CENTRALIZADOS
-*/
- 
+
+
+/* TÍTULOS */
+
 .center-title {
- 
-    /* Espaço abaixo do título */
+
     margin: 0 0 70px;
- 
-    /* Centraliza */
+
     text-align: center;
- 
-    /* Tamanho */
+
     font-size: 39px;
 }
- 
- 
- 
-/* 
+
+
+/* ============================================================
    QUEM SOMOS
-*/
- 
- 
-/*
-   Organiza texto + imagem em duas colunas.
- 
-   1.15fr = coluna do texto
-   .85fr  = coluna da imagem
-*/
- 
+   NÃO ALTERADO
+============================================================ */
+
 .about {
+
     display: grid;
- 
-    grid-template-columns: 2.15fr .85fr;
- 
-    /* Alinhamento vertical */
+
+    grid-template-columns: 1.6fr 1fr;
+
     align-items: center;
- 
-    /* Espaço entre texto e imagem */
-    gap: 0px;
+
+    gap: 25px;
 }
- 
- 
-/* 
-   TÍTULO "QUEM SOMOS"
-*/
- 
+
+
 .about h2 {
+
     margin: 0 200px 25px;
- 
+
     font-size: 50px;
- 
+
     line-height: 1.08;
 }
- 
- 
-/* 
-   TEXTOS DE "QUEM SOMOS" E SERVIÇOS
-*/
- 
-.about p,
-.service p {
- 
-    /* Limita a largura do texto */
+
+
+.about p {
+
     max-width: 600px;
+
     margin: 0 200px 25px;
+
     color: var(--gray);
+
     font-size: 16px;
- 
+
     line-height: 1.6;
 }
- 
- 
-/* 
+
+
+/* ============================================================
    IMAGENS ARREDONDADAS
- 
-   Usada nas imagens de:
-   - Quem Somos
-   - Serviços
-*/
- 
+============================================================ */
+
 .rounded-image {
- 
-    /* Ocupa toda a largura disponível */
+
     margin: 0 0 25px;
+
     width: 100%;
+
     height: 500px;
+
     aspect-ratio: 4 / 5;
-    
-    /* Faz a imagem preencher sem deformar */
+
     object-fit: cover;
- 
-    /* Cantos arredondados */
+
     border-radius: 20px;
 }
- 
- 
-/* 
+
+
+/* ============================================================
    LINKS "FALE CONOSCO"
-*/
- 
+============================================================ */
+
 .text-link {
+
     margin: 0 200px 25px;
+
     width: 180px;
+
     height: 60px;
+
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
+
     border-radius: 24px;
+
     background: var(--red);
+
     color: #fff;
+
     font-size: 16px;
+
     font-weight: 700;
-    text-decoration: none; 
+
+    text-decoration: none;
+
     transition: background-color .2s;
 }
 
-/* Mudança suave ao passar o mouse */
-.button:hover {
+
+.text-link:hover {
+
     background: #e01414;
 }
-}
- 
 
 
-
-/* 
+/* ============================================================
    PILARES
-*/
+============================================================ */
 
 .pillars {
+
     padding-top: 70px;
 }
 
 
-/*
-   Estas três áreas usam 3 colunas:
+.pillar-grid {
 
-   - Nossos Pilares
-   - Nossa Equipe
-   - Depoimentos
-*/
-
-.pillar-grid,
-.team-grid,
-.testimonial-grid {
     display: grid;
 
     grid-template-columns: repeat(3, 1fr);
-}
 
-
-/* Espaçamento entre os pilares */
-
-.pillar-grid {
     gap: 60px;
 }
 
 
-/* Centraliza cada pilar */
-
 .pillar {
+
     text-align: center;
 }
 
 
-/* 
-   ÍCONE DOS PILARES
-*/
-
 .pillar-icon {
 
-    /* Tamanho */
     width: 96px;
+
     height: 96px;
 
-    /* Centraliza */
     margin: 0 auto 20px;
 
-    /* Faz o ícone ficar circular */
     display: grid;
+
     place-items: center;
 
-    /* Borda pontilhada */
     border: 3px dashed #ddd;
 
     border-radius: 50%;
 
-    /* Tamanho do símbolo */
     font-size: 47px;
 }
 
 
-/* Título do pilar */
-
 .pillar h3 {
+
     margin: 0 0 15px;
 
     font-size: 31px;
@@ -582,9 +526,8 @@ a {
 }
 
 
-/* Texto do pilar */
-
 .pillar p {
+
     margin: 0;
 
     color: var(--gray);
@@ -595,169 +538,243 @@ a {
 }
 
 
-
-/* 
+/* ============================================================
    NOSSA EQUIPE
-*/
+============================================================ */
 
 .team {
+
+    width: 100%;
+
+    overflow: hidden;
+
     padding-top: 90px;
 }
 
 
-/* Espaçamento entre as pessoas */
+.team .center-title {
 
-.team-grid {
-    gap: 65px;
+    text-align: center;
+
+    margin-bottom: 85px;
+}
+
+
+/* CARROSSEL */
+
+.team-carousel {
+
+    width: 100%;
+
+    overflow: hidden;
+}
+
+
+.team-viewport {
+
+    width: 100%;
+
+    overflow: hidden;
+}
+
+
+/* TRILHO */
+
+.team-track {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 70px;
+
+    width: max-content;
+
+    animation:
+        teamInfiniteScroll
+        32s
+        linear
+        infinite;
+
+    will-change: transform;
+}
+
+
+/* CARD */
+
+.team-card {
+
+    flex: 0 0 260px;
+
+    width: 260px;
 
     text-align: center;
 }
 
 
-/* 
-   FOTO DOS MEMBROS DA EQUIPE
-*/
+/* FOTO */
 
 .team-photo {
 
-    /* Tamanho da foto */
-    width: 160px;
-    height: 160px;
+    width: 260px;
 
-    /* Centraliza */
-    margin: auto;
+    height: 260px;
 
-    /* Deixa a foto circular */
+    margin: 0 auto;
+
     border-radius: 50%;
 
-    /*
-       Cor de fundo caso a imagem não carregue.
-    */
-    background: #ff1717 center/cover no-repeat;
-}
+    background-color: #ff1717;
 
+    background-position: center;
 
-/* 
-   FOTO 1 — RONALDO TANUS
-*/
+    background-size: cover;
 
-.photo-1 {
-    background-image: url(
-        "https://recantodaserenidade.com.br/_assets/v11/a66cbadf3015e70c8e698ebd2dadebc73adf1f90.png"
-    );
-}
-
-
-/* 
-   FOTO 2 — GUSTAVO
-
-   ALTERE A URL ABAIXO PARA TROCAR A FOTO.
-*/
-
-.photo-2 {
-    background-image: url(
-        "https://recantodaserenidade.com.br/_assets/v11/108e8d29c7830dd2a6ccaf935cb7a9f5b775081a.png"
-    );
+    background-repeat: no-repeat;
 }
 
 
 /* ============================================================
-   FOTO 3 — WELTON SOUZA
-
-   ALTERE A URL ABAIXO PARA TROCAR A FOTO.
+   FOTOS
 ============================================================ */
 
+.photo-1 {
+
+    background-image:
+        url("midia/ronaldo.png");
+}
+
+
+.photo-2 {
+
+    background-image:
+        url("midia/gustavo.png");
+}
+
+
 .photo-3 {
-    background-image: url(
-        "/midia/valores.png"
-    );
+
+    background-image:
+        url("midia/welton.png");
 }
 
 
-/* Nome da pessoa */
+.photo-4 {
 
-.team h3 {
-    margin: 18px 0 7px;
-
-    font-size: 18px;
+    background-image:
+        url("midia/lucia.png");
 }
 
 
-/* Cargo da pessoa */
+.photo-5 {
 
-.team p {
+    background-image:
+        url("midia/felipe.png");
+}
+
+
+.photo-6 {
+
+    background-image:
+        url("midia/joyce.png");
+}
+
+
+.photo-7 {
+
+    background-image:
+        url("midia/amarildo.png");
+}
+
+
+/* NOME */
+
+.team-card h3 {
+
+    margin: 20px 0 8px;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    color: #111;
+}
+
+
+/* CARGO */
+
+.team-card p {
+
     margin: 0;
 
     font-size: 14px;
+
+    color: #33294f;
 }
 
+
+/* ============================================================
+   ANIMAÇÃO INFINITA
+============================================================ */
+
+@keyframes teamInfiniteScroll {
+
+    from {
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        transform:
+            translateX(-50%);
+    }
+}
 
 
 /* ============================================================
    SERVIÇOS
+   ALINHADOS COM "QUEM SOMOS"
 ============================================================ */
 
 .services {
+
     padding-top: 80px;
 }
 
 
-/*
-   Cada serviço possui:
-
-   TEXTO | IMAGEM
-
-   em duas colunas.
-*/
+/* CADA SERVIÇO */
 
 .service {
 
     display: grid;
 
-    grid-template-columns: 1.3fr .8fr;
+    grid-template-columns: 1.6fr 1fr;
 
     align-items: center;
 
-    gap: 80px;
+    gap: 25px;
 
-    /* Espaço entre um serviço e outro */
     margin-bottom: 75px;
-}
 
-
-/*
-   ALTERA A ORDEM DE ALGUNS SERVIÇOS.
-
-   O serviço pode aparecer:
-
-   IMAGEM | TEXTO
-
-   em vez de:
-
-   TEXTO | IMAGEM
-*/
-
-.service:nth-of-type(odd) {
-    direction: rtl;
-}
-
-
-/*
-   Corrige a direção do conteúdo interno para
-   que o texto continue normal.
-*/
-
-.service:nth-of-type(odd) > * {
     direction: ltr;
 }
 
 
-/* ============================================================
-   TÍTULO DOS SERVIÇOS
-============================================================ */
+/* BLOCO DE TEXTO */
+
+.service > div {
+
+    direction: ltr;
+}
+
+
+/* TÍTULO */
 
 .service h3 {
-    margin: 0 0 35px;
+
+    margin: 0 200px 35px;
 
     font-size: 37px;
 
@@ -765,12 +782,46 @@ a {
 }
 
 
-/* Texto dos serviços */
+/* PARÁGRAFOS */
 
 .service p {
-    line-height: 1.55;
+
+    max-width: 600px;
+
+    margin: 0 200px 25px;
+
+    color: var(--gray);
+
+    font-size: 16px;
+
+    line-height: 1.6;
 }
 
+
+/* BOTÃO */
+
+.service .text-link {
+
+    margin: 0 200px 25px;
+}
+
+
+/* IMAGEM */
+
+.service .rounded-image {
+
+    margin: 0 0 25px;
+
+    width: 100%;
+
+    height: 500px;
+
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+}
 
 
 /* ============================================================
@@ -778,11 +829,10 @@ a {
 ============================================================ */
 
 .projects {
+
     padding-top: 55px;
 }
 
-
-/* Título "Notícias e Novidades" */
 
 .projects h3 {
 
@@ -794,32 +844,15 @@ a {
 }
 
 
-/* ============================================================
-   ÁREA DO INSTAGRAM
-============================================================ */
-
 .instagram-box {
 
-    /* Altura mínima */
     min-height: 380px;
 
-    /* Espaço interno superior */
     padding-top: 25px;
 
-    /* Linha superior */
     border-top: 1px solid #eee;
 }
 
-
-/* ============================================================
-   CABEÇALHO DO INSTAGRAM
-
-   Contém:
-   - Nome do perfil
-   - Posts
-   - Seguindo
-   - Seguidores
-============================================================ */
 
 .instagram-head {
 
@@ -831,20 +864,13 @@ a {
 }
 
 
-/* Nome do perfil */
-
 .instagram-head > span {
 
-    /*
-       Empurra as estatísticas para a direita.
-    */
     margin-right: auto;
 
     font-size: 15px;
 }
 
-
-/* Cada número do Instagram */
 
 .instagram-head div {
 
@@ -856,36 +882,25 @@ a {
 }
 
 
-/* Número */
-
 .instagram-head b {
+
     font-size: 13px;
 
     font-weight: 400;
 }
 
 
-/* Texto abaixo do número */
-
 .instagram-head small {
+
     font-size: 12px;
 }
 
 
-/* ============================================================
-   TEXTO DA PUBLICAÇÃO DO INSTAGRAM
-============================================================ */
+/* TEXTO INSTAGRAM */
 
 .instagram-box p {
 
     max-width: 280px;
-
-    /*
-       Posiciona o texto mais abaixo.
-
-       Se quiser aproximá-lo do topo,
-       diminua 320px.
-    */
 
     margin-top: 320px;
 
@@ -893,18 +908,20 @@ a {
 }
 
 
-/* Link "read more info" — usado pelo script.js */
-
 .read-more-toggle {
+
     cursor: pointer;
+
     color: var(--light-gray);
+
     font-size: 12px;
 }
 
+
 .read-more-toggle:hover {
+
     color: var(--gray);
 }
-
 
 
 /* ============================================================
@@ -912,67 +929,56 @@ a {
 ============================================================ */
 
 .testimonials {
+
     padding-top: 80px;
 }
 
 
-/* Espaço entre os três depoimentos */
-
 .testimonial-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
     gap: 40px;
 }
 
 
-/* ============================================================
-   CARD DE VÍDEO / DEPOIMENTO
-============================================================ */
+/* CARD */
 
 .video-card {
 
-    /* Altura do card */
     height: 410px;
 
-    /* Organiza o conteúdo verticalmente */
     display: flex;
 
     flex-direction: column;
 
-    /* Coloca o conteúdo no final */
     justify-content: flex-end;
 
-    /* Espaçamento interno */
     padding: 0 28px 18px;
 
-    /* Borda */
     border: 1px solid var(--border);
 
-    /* Arredondamento */
     border-radius: 28px;
 
-    /* Cor do texto */
     color: var(--light-gray);
 
-    /* Tamanho */
     font-size: 12px;
 }
 
 
-/* ============================================================
-   BARRA DE PROGRESSO DO VÍDEO
-============================================================ */
+/* PROGRESSO */
 
 .progress {
 
-    /* Altura */
     height: 3px;
 
-    /* Espaço acima */
     margin-top: 8px;
 
-    /* Cor */
     background: #eee;
 }
-
 
 
 /* ============================================================
@@ -980,13 +986,10 @@ a {
 ============================================================ */
 
 .transparency {
+
     padding-top: 100px;
 }
 
-
-/*
-   Divide a área de documentos em duas colunas.
-*/
 
 .transparency-grid {
 
@@ -996,63 +999,46 @@ a {
 
     gap: 80px;
 
-    /*
-       Espaço entre o título e os documentos.
-    */
     margin-top: 100px;
 }
 
 
-/* Títulos dos documentos */
-
 .transparency-grid h3 {
+
     color: var(--light-gray);
 
     font-size: 25px;
 }
 
 
-/* Nome do documento */
-
 .transparency-grid h4 {
+
     font-size: 18px;
 }
 
 
-/* Link "Download" */
-
 .transparency-grid a {
+
     color: var(--light-gray);
 
     font-weight: 600;
 }
 
 
-/* ============================================================
-   TEXTO DA TRANSPARÊNCIA
-============================================================ */
-
 .transparency-text {
 
-    /* Largura máxima */
     max-width: 600px;
 
-    /* Centraliza */
     margin: 50px auto;
 
-    /* Cor */
     color: var(--gray);
 
-    /* Centraliza o texto */
     text-align: center;
 
-    /* Tamanho */
     font-size: 15px;
 
-    /* Espaçamento entre linhas */
     line-height: 1.6;
 }
-
 
 
 /* ============================================================
@@ -1061,60 +1047,31 @@ a {
 
 .contact {
 
-    /* Espaçamento superior */
     padding: 100px 0 180px;
 
-    /* Centraliza tudo */
     text-align: center;
 }
 
-
-/* ============================================================
-   LINKS DE CONTATO
-
-   Contém:
-   - Internação
-   - Endereço
-   - Facebook
-   - Instagram
-   - Informações/Doações
-============================================================ */
 
 .contact-links {
 
     display: flex;
 
-    /* Coloca os links um abaixo do outro */
     flex-direction: column;
 
-    /* Espaço entre eles */
     gap: 25px;
 
-    /* Cor */
     color: var(--light-gray);
 
-    /* Tamanho */
     font-size: 28px;
 }
 
 
-/* ============================================================
-   EFEITO DOS LINKS DE CONTATO
-
-   Quando passar o mouse:
-   #aaa → #777
-============================================================ */
-
 .contact-links a:hover {
+
     color: #777;
 }
 
-
-/* ============================================================
-   LINK "INFORMAÇÕES/DOAÇÕES"
-
-   Deixa este link maior e em negrito.
-============================================================ */
 
 .contact-links .donations {
 
@@ -1124,138 +1081,172 @@ a {
 }
 
 
+/* ============================================================
+   RESPONSIVO — EQUIPE
+============================================================ */
+
+@media (max-width: 1200px) {
+
+    .team-card {
+
+        flex-basis: 230px;
+
+        width: 230px;
+    }
+
+    .team-photo {
+
+        width: 230px;
+
+        height: 230px;
+    }
+
+    .team-track {
+
+        gap: 50px;
+    }
+}
+
 
 /* ============================================================
-   RESPONSIVIDADE — CELULAR
-============================================================
+   RESPONSIVO — TABLET
+============================================================ */
 
-   Todas as regras abaixo são aplicadas quando a tela
-   tiver no máximo 800px de largura.
+@media (max-width: 768px) {
 
-   Isso inclui a maioria dos celulares e alguns tablets.
+    .team .center-title {
+
+        margin-bottom: 50px;
+    }
+
+    .team-card {
+
+        flex-basis: 190px;
+
+        width: 190px;
+    }
+
+    .team-photo {
+
+        width: 190px;
+
+        height: 190px;
+    }
+
+    .team-track {
+
+        gap: 25px;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVO — CELULAR PEQUENO
+============================================================ */
+
+@media (max-width: 480px) {
+
+    .team-card {
+
+        flex-basis: 170px;
+
+        width: 170px;
+    }
+
+    .team-photo {
+
+        width: 170px;
+
+        height: 170px;
+    }
+
+    .team-track {
+
+        gap: 20px;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE GERAL — CELULAR
 ============================================================ */
 
 @media (max-width: 800px) {
 
-
-    /* ========================================================
-       LARGURA NO CELULAR
-
-       Em vez dos 80px usados no computador,
-       usamos apenas 32px.
-    ======================================================== */
+    /* LARGURA */
 
     .container,
     .header,
     .stats {
-        width: calc(100% - 32px);
+
+        width:
+            calc(100% - 32px);
     }
 
 
-
-    /* ========================================================
-       CABEÇALHO NO CELULAR
-    ======================================================== */
+    /* CABEÇALHO */
 
     .header {
 
-        /* Permite que a altura se adapte */
         height: auto;
 
-        /* Espaçamento interno */
         padding: 20px 0;
 
-        /* Logo acima e menu abaixo */
         flex-direction: column;
 
-        /* Espaço entre logo e menu */
         gap: 20px;
     }
 
 
-
-    /* ========================================================
-       MENU NO CELULAR
-    ======================================================== */
+    /* MENU */
 
     .nav {
 
-        /* Menor espaço entre os links */
         gap: 16px;
 
-        /* Permite quebrar linha */
         flex-wrap: wrap;
 
-        /* Centraliza */
         justify-content: center;
 
-        /* Fonte menor */
         font-size: 13px;
     }
 
 
-
-    /* ========================================================
-       HERO NO CELULAR
-    ======================================================== */
+    /* HERO */
 
     .hero {
 
-        /* Aumenta a altura da capa */
         height: 520px;
     }
 
 
-    /* Conteúdo da capa */
-
     .hero-content {
 
-        /*
-           Diminui o espaçamento lateral
-           para caber melhor no celular.
-        */
         padding: 50px 28px;
     }
 
 
-    /* Título menor no celular */
-
     .hero h1 {
+
         font-size: 42px;
     }
 
 
-
-    /* ========================================================
-       ESTATÍSTICAS NO CELULAR
-    ======================================================== */
+    /* ESTATÍSTICAS */
 
     .stats {
 
-        /* Espaço menor entre os números */
         gap: 55px;
 
-        /* Menor espaço inferior */
         padding-bottom: 40px;
     }
 
 
-
-    /* ========================================================
-       TRANSFORMA AS ÁREAS EM UMA ÚNICA COLUNA
-
-       No computador:
-       TEXTO | IMAGEM
-
-       No celular:
-       TEXTO
-       IMAGEM
-    ======================================================== */
+    /* COLUNA ÚNICA */
 
     .about,
     .service,
     .pillar-grid,
-    .team-grid,
     .testimonial-grid,
     .transparency-grid {
 
@@ -1263,18 +1254,16 @@ a {
     }
 
 
-    /* Espaçamento entre texto e imagem */
+    /* ESPAÇAMENTO */
 
     .about,
     .service {
+
         gap: 35px;
     }
 
 
-
-    /* ========================================================
-       TÍTULOS NO CELULAR
-    ======================================================== */
+    /* TÍTULOS */
 
     .center-title {
 
@@ -1284,10 +1273,7 @@ a {
     }
 
 
-
-    /* ========================================================
-       IMAGENS NO CELULAR
-    ======================================================== */
+    /* IMAGENS */
 
     .rounded-image,
     .service .rounded-image {
@@ -1296,29 +1282,35 @@ a {
     }
 
 
-
-    /* ========================================================
-       SERVIÇOS NO CELULAR
-
-       Remove a inversão de direção usada no computador.
-    ======================================================== */
-
-    .service:nth-of-type(odd) {
-        direction: ltr;
-    }
-
-
-    /* Título dos serviços */
+    /* SERVIÇOS */
 
     .service h3 {
+
+        margin-left: 28px;
+
+        margin-right: 28px;
+
         font-size: 30px;
     }
 
 
+    .service p {
 
-    /* 
-       PROJETOS NO CELULAR
-    */
+        margin-left: 28px;
+
+        margin-right: 28px;
+    }
+
+
+    .service .text-link {
+
+        margin-left: 28px;
+
+        margin-right: 28px;
+    }
+
+
+    /* PROJETOS */
 
     .projects h3 {
 
@@ -1326,31 +1318,19 @@ a {
     }
 
 
-    /* Texto do Instagram */
-
     .instagram-box p {
-
-        /*
-           Diminui a distância no celular.
-        */
 
         margin-top: 220px;
     }
 
 
-
-    /* 
-       CONTATOS NO CELULAR
-    */
+    /* CONTATO */
 
     .contact-links {
 
-        /* Texto menor */
         font-size: 23px;
     }
 
-
-    /* Informações/Doações */
 
     .contact-links .donations {
 
