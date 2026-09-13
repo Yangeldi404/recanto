@@ -1,57 +1,96 @@
 /*
-
    JAVASCRIPT DO SITE
 
-   Este arquivo cuida de pequenos comportamentos
-   da página. O site funciona normalmente mesmo
-   sem JavaScript — este arquivo só adiciona
-   detalhes extras.
-
+   Este arquivo cuida dos comportamentos
+   extras da página.
 */
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
+/* ============================================================
+   CARROSSEL INFINITO — NOSSA EQUIPE
+============================================================ */
 
-  /*
-     "READ MORE INFO" DO INSTAGRAM
+const teamTrack = document.querySelector(".team-track");
 
-     Quando a pessoa clicar no texto "read more info",
-     o texto da publicação passa a mostrar tudo,
-     em vez de ficar cortado.
+if (teamTrack) {
 
-     Para isso funcionar, o texto completo do post
-     deve estar dentro do <p> da .instagram-box no HTML.
-  */
+    /*
+       Pega todos os cards originais
+    */
 
-  var readMore = document.querySelector('.read-more-toggle');
-  var instagramText = document.querySelector('.instagram-box p');
+    const originalCards = Array.from(
+        teamTrack.querySelectorAll(".team-card")
+    );
 
-  if (readMore && instagramText) {
-    readMore.addEventListener('click', function () {
-      instagramText.style.display = 'block';
-      instagramText.style.webkitLineClamp = 'unset';
-      instagramText.style.maxWidth = '420px';
-      readMore.style.display = 'none';
+
+    /*
+       Duplica todos os cards.
+
+       Assim temos:
+
+       1 2 3 4 5 6 7
+       1 2 3 4 5 6 7
+
+       Quando a primeira sequência terminar,
+       a segunda já estará exatamente no mesmo lugar,
+       criando o efeito infinito.
+    */
+
+    originalCards.forEach(function (card) {
+
+        const clone = card.cloneNode(true);
+
+        clone.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        teamTrack.appendChild(clone);
+
     });
-  }
+
+}
+
+    /* ============================================================
+       READ MORE INFO — INSTAGRAM
+    ============================================================ */
+
+    const readMore =
+        document.querySelector(".read-more-toggle");
+
+    const instagramText =
+        document.querySelector(".instagram-box p");
 
 
-  /*
-     BARRA DE PROGRESSO DOS DEPOIMENTOS
+    if (readMore && instagramText) {
 
-     Preenche a barrinha cinza (.progress) com uma cor,
-     apenas para dar a ideia visual de "vídeo assistido".
+        readMore.addEventListener("click", function () {
 
-     Isso é só decorativo: não reproduz nenhum vídeo real.
-     Se no futuro os cards de depoimento ganharem um
-     <video> de verdade, esta parte pode ser substituída.
-  */
+            instagramText.style.display = "block";
 
-  document.querySelectorAll('.video-card').forEach(function (card) {
-    var bar = card.querySelector('.progress');
-    if (bar) {
-      bar.style.background =
-        'linear-gradient(90deg, var(--red) 0%, #eee 0%)';
+            instagramText.style.webkitLineClamp = "unset";
+
+            instagramText.style.maxWidth = "420px";
+
+            readMore.style.display = "none";
+        });
     }
-  });
+
+
+    /* ============================================================
+       BARRA DE PROGRESSO DOS DEPOIMENTOS
+    ============================================================ */
+
+    document.querySelectorAll(".video-card").forEach(function (card) {
+
+        const bar = card.querySelector(".progress");
+
+        if (bar) {
+
+            bar.style.background =
+                "linear-gradient(90deg, var(--red) 0%, #eee 0%)";
+        }
+
+    });
 
 });
