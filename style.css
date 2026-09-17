@@ -1,20 +1,27 @@
 /* ============================================================
    CONFIGURAÇÕES GERAIS
-============================================================ */
+   ============================================================ */
 
 :root {
 
     --red: #ff1717;
+    --red-hover: #e01414;
 
     --gray: #555;
-
     --light-gray: #aaa;
 
     --border: #ddd;
 
+    --background: #fff;
+    --cream: #fef9f6;
+
     --max-width: 1160px;
 }
 
+
+/* ============================================================
+   RESET
+   ============================================================ */
 
 * {
     box-sizing: border-box;
@@ -28,12 +35,22 @@ html {
 
 body {
     margin: 0;
+    padding: 0;
 
-    background: #fff;
-
+    background: var(--background);
     color: #171717;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+img {
+    max-width: 100%;
 }
 
 
@@ -43,51 +60,59 @@ a {
 }
 
 
-.container,
-.header,
-.stats {
-    width: min(var(--max-width), calc(100% - 80px));
-    margin: auto;
-}
-
-
 /* ============================================================
    CABEÇALHO
-============================================================ */
+   ============================================================ */
 
 .header {
 
-    height: 100px;
-
     width: 100%;
-
-    background-color: #fef9f6;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
+    min-height: 100px;
 
     padding: 0 10%;
+
+    background: var(--cream);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
 }
 
 
 /* LOGO */
 
+.brand {
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+
 .brand img {
 
     width: 90px;
-
     height: 90px;
 
     object-fit: contain;
+
+    display: block;
 }
 
 
 /* MENU */
 
 .nav {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex-wrap: wrap;
+
+    gap: 35px;
 
     font-family:
         'Inter',
@@ -99,12 +124,7 @@ a {
         Arial,
         sans-serif;
 
-    display: flex;
-
-    gap: 50px;
-
     font-size: 16px;
-
     font-weight: 500;
 
     color: #1a1a1a;
@@ -113,35 +133,40 @@ a {
 
 .nav a {
 
-    text-decoration: none;
-
     color: #2b2b2b;
 
-    transition: opacity .2s;
+    white-space: nowrap;
+
+    transition:
+        opacity .2s ease,
+        color .2s ease;
 }
 
 
 .nav a:hover {
 
     opacity: .55;
+
+    color: var(--red);
 }
 
 
 /* ============================================================
    HERO
-============================================================ */
+   ============================================================ */
 
 .hero {
 
     width: 100%;
 
-    position: relative;
-
     min-height: 470px;
 
-    margin-top: 0;
+    position: relative;
 
     overflow: hidden;
+
+    display: flex;
+    align-items: center;
 
     background:
         linear-gradient(
@@ -149,21 +174,16 @@ a {
             rgb(255, 255, 255) 0%,
             rgb(253, 251, 249) 100%
         );
-
-    display: flex;
-
-    align-items: center;
 }
 
-
-/* IMAGEM */
 
 .hero-bg {
 
     position: absolute;
 
-    width: 100%;
+    inset: 0;
 
+    width: 100%;
     height: 100%;
 
     object-fit: cover;
@@ -171,8 +191,6 @@ a {
     z-index: 0;
 }
 
-
-/* SOBREPOSIÇÃO */
 
 .hero-overlay {
 
@@ -185,35 +203,29 @@ a {
     background:
         linear-gradient(
             to right,
-            rgba(255,255,255,0.8) 0%,
-            rgba(255,255,255,0.7) 30%,
-            rgba(255,255,255,0.35) 55%,
+            rgba(255,255,255,.80) 0%,
+            rgba(255,255,255,.70) 30%,
+            rgba(255,255,255,.35) 55%,
             rgba(255,255,255,0) 70%
         );
 }
 
-
-/* FAIXA SUPERIOR */
 
 .hero-topbar {
 
     position: absolute;
 
     top: 0;
-
     left: 0;
-
     right: 0;
 
     height: 14px;
 
-    background: #fef9f6;
+    background: var(--cream);
 
     z-index: 2;
 }
 
-
-/* CONTEÚDO */
 
 .hero-content {
 
@@ -224,32 +236,23 @@ a {
     width: 100%;
 
     padding: 60px 10%;
-
-    margin-top: auto;
-
-    margin-bottom: auto;
 }
 
-
-/* TÍTULO */
 
 .hero h1 {
 
     margin: 0 0 18px;
 
-    font-size: 65px;
+    max-width: 650px;
 
+    font-size: 65px;
     line-height: 1.05;
 
     font-weight: 700;
 
     color: #1a1a1a;
-
-    max-width: 650px;
 }
 
-
-/* FRASE */
 
 .hero p {
 
@@ -260,68 +263,64 @@ a {
     color: var(--red);
 
     font-size: 16px;
-
     line-height: 1.45;
 }
 
 
-/* BOTÃO */
+/* BOTÃO HERO */
 
 .button {
 
     width: 180px;
-
     height: 70px;
 
     display: inline-flex;
 
     align-items: center;
-
     justify-content: center;
 
     border-radius: 24px;
 
     background: var(--red);
-
     color: #fff;
 
     font-size: 20px;
-
     font-weight: 700;
 
-    text-decoration: none;
-
-    transition: background-color .2s;
+    transition:
+        background .2s ease,
+        transform .2s ease;
 }
 
 
 .button:hover {
 
-    background: #e01414;
+    background: var(--red-hover);
+
+    transform: translateY(-2px);
 }
 
 
 /* ============================================================
    ESTATÍSTICAS
-============================================================ */
+   ============================================================ */
 
 .stats {
 
-    background-color: #fef9f6;
-
     width: 100%;
 
-    height: 120px;
-
-    display: flex;
-
-    gap: 105px;
+    min-height: 120px;
 
     padding: 15px 10%;
+
+    background: var(--cream);
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 105px;
 }
 
-
-/* NÚMEROS */
 
 .stats strong {
 
@@ -335,9 +334,9 @@ a {
 }
 
 
-/* TEXTO */
-
 .stats p {
+
+    margin: 5px 0 0;
 
     color: var(--gray);
 
@@ -348,16 +347,21 @@ a {
 
 
 /* ============================================================
-   SEÇÕES GERAIS
-============================================================ */
+   SEÇÕES
+   ============================================================ */
 
 .section {
+
+    width: min(
+        var(--max-width),
+        calc(100% - 80px)
+    );
+
+    margin: 0 auto;
 
     padding: 90px 0;
 }
 
-
-/* TÍTULOS */
 
 .center-title {
 
@@ -366,29 +370,37 @@ a {
     text-align: center;
 
     font-size: 39px;
+    line-height: 1.2;
 }
 
 
 /* ============================================================
    QUEM SOMOS
-   NÃO ALTERADO
-============================================================ */
+   ============================================================ */
 
 .about {
 
     display: grid;
 
-    grid-template-columns: 1.6fr 1fr;
+    grid-template-columns:
+        1.6fr
+        1fr;
 
     align-items: center;
 
-    gap: 25px;
+    gap: 40px;
+}
+
+
+.about-text {
+
+    min-width: 0;
 }
 
 
 .about h2 {
 
-    margin: 0 200px 25px;
+    margin: 0 0 25px;
 
     font-size: 50px;
 
@@ -400,7 +412,7 @@ a {
 
     max-width: 600px;
 
-    margin: 0 200px 25px;
+    margin: 0 0 25px;
 
     color: var(--gray);
 
@@ -411,41 +423,41 @@ a {
 
 
 /* ============================================================
-   IMAGENS ARREDONDADAS
-============================================================ */
+   IMAGENS
+   ============================================================ */
 
 .rounded-image {
-
-    margin: 0 0 25px;
 
     width: 100%;
 
     height: 500px;
+
+    margin: 0;
 
     aspect-ratio: 4 / 5;
 
     object-fit: cover;
 
     border-radius: 20px;
+
+    display: block;
 }
 
 
 /* ============================================================
-   LINKS "FALE CONOSCO"
-============================================================ */
+   BOTÕES "FALE CONOSCO"
+   ============================================================ */
 
 .text-link {
 
-    margin: 0 200px 25px;
-
     width: 180px;
+    min-height: 60px;
 
-    height: 60px;
+    margin: 0;
 
     display: inline-flex;
 
     align-items: center;
-
     justify-content: center;
 
     border-radius: 24px;
@@ -460,19 +472,23 @@ a {
 
     text-decoration: none;
 
-    transition: background-color .2s;
+    transition:
+        background .2s ease,
+        transform .2s ease;
 }
 
 
 .text-link:hover {
 
-    background: #e01414;
+    background: var(--red-hover);
+
+    transform: translateY(-2px);
 }
 
 
 /* ============================================================
    PILARES
-============================================================ */
+   ============================================================ */
 
 .pillars {
 
@@ -484,7 +500,8 @@ a {
 
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
     gap: 30px;
 }
@@ -499,20 +516,13 @@ a {
 .pillar-icon {
 
     width: 96px;
-
     height: 96px;
 
     margin: 0 auto 20px;
 
-    display: grid;
+    display: block;
 
-    place-items: center;
-
-    border: 3px dashed #ddd;
-
-    border-radius: 50%;
-
-    font-size: 47px;
+    object-fit: contain;
 }
 
 
@@ -532,7 +542,7 @@ a {
 
     color: var(--gray);
 
-    font-size: 25px;
+    font-size: 20px;
 
     line-height: 1.45;
 }
@@ -540,27 +550,28 @@ a {
 
 /* ============================================================
    NOSSA EQUIPE
-============================================================ */
+   ============================================================ */
 
 .team {
 
     width: 100%;
 
-    overflow: hidden;
+    max-width: none;
 
     padding-top: 90px;
+
+    padding-left: 0;
+    padding-right: 0;
+
+    overflow: hidden;
 }
 
 
 .team .center-title {
 
-    text-align: center;
-
-    margin-bottom: 85px;
+    margin-bottom: 70px;
 }
 
-
-/* CARROSSEL */
 
 .team-carousel {
 
@@ -578,17 +589,15 @@ a {
 }
 
 
-/* TRILHO */
-
 .team-track {
+
+    width: max-content;
 
     display: flex;
 
     align-items: flex-start;
 
     gap: 70px;
-
-    width: max-content;
 
     animation:
         teamInfiniteScroll
@@ -617,73 +626,48 @@ a {
 .team-photo {
 
     width: 260px;
-
     height: 260px;
 
     margin: 0 auto;
 
     border-radius: 50%;
 
-    background-color: #ff1717;
+    background-color: var(--red);
 
     background-position: center;
-
     background-size: cover;
-
     background-repeat: no-repeat;
 }
 
 
-/* ============================================================
-   FOTOS
-============================================================ */
+/* FOTOS */
 
 .photo-1 {
-
-    background-image:
-        url("midia/ronaldo.png");
+    background-image: url("midia/ronaldo.png");
 }
-
 
 .photo-2 {
-
-    background-image:
-        url("midia/gustavo.png");
+    background-image: url("midia/gustavo.png");
 }
-
 
 .photo-3 {
-
-    background-image:
-        url("midia/welton.png");
+    background-image: url("midia/welton.png");
 }
-
 
 .photo-4 {
-
-    background-image:
-        url("midia/lucia.png");
+    background-image: url("midia/lucia.png");
 }
-
 
 .photo-5 {
-
-    background-image:
-        url("midia/felipe.png");
+    background-image: url("midia/felipe.png");
 }
-
 
 .photo-6 {
-
-    background-image:
-        url("midia/joyce.png");
+    background-image: url("midia/joyce.png");
 }
 
-
 .photo-7 {
-
-    background-image:
-        url("midia/amarildo.png");
+    background-image: url("midia/amarildo.png");
 }
 
 
@@ -713,67 +697,69 @@ a {
 }
 
 
-/* ============================================================
-   ANIMAÇÃO INFINITA
-============================================================ */
+/* ANIMAÇÃO */
 
 @keyframes teamInfiniteScroll {
 
     from {
-
-        transform:
-            translateX(0);
+        transform: translateX(0);
     }
 
     to {
-
-        transform:
-            translateX(-50%);
+        transform: translateX(-50%);
     }
 }
 
 
 /* ============================================================
-   SERVIÇOS — CENTRALIZADOS
-============================================================ */
+   SERVIÇOS
+   ============================================================ */
 
 .services {
+
     width: 100%;
+
+    max-width: none;
+
     padding-top: 80px;
 }
 
 
-/* CADA SERVIÇO */
-
 .service {
-    width: min(1160px, calc(100% - 80px));
+
+    width: min(
+        var(--max-width),
+        calc(100% - 80px)
+    );
 
     margin: 0 auto 90px;
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr
+        1fr;
 
     align-items: center;
 
     gap: 70px;
-
-    direction: ltr;
 }
 
 
-/* BLOCO DE TEXTO */
+.service:last-child {
+
+    margin-bottom: 0;
+}
+
 
 .service > div {
-    width: 100%;
 
-    direction: ltr;
+    width: 100%;
 }
 
 
-/* TÍTULO */
-
 .service h3 {
+
     margin: 0 0 30px;
 
     font-size: 50px;
@@ -784,9 +770,8 @@ a {
 }
 
 
-/* PARÁGRAFOS */
-
 .service p {
+
     max-width: 600px;
 
     margin: 0 0 30px;
@@ -801,23 +786,13 @@ a {
 }
 
 
-/* BOTÃO */
-
-.service .text-link {
-    margin: 0;
-}
-
-
-/* IMAGEM */
-
 .service .rounded-image {
+
     width: 100%;
 
     height: 500px;
 
     margin: 0;
-
-    aspect-ratio: 4 / 5;
 
     object-fit: cover;
 
@@ -828,79 +803,17 @@ a {
 
 
 /* ============================================================
-   SERVIÇO 2
-   IMAGEM E TEXTO CENTRALIZADOS
-============================================================ */
-
-.service:nth-of-type(3) {
-    margin-bottom: 0;
-}
-
-
-/* ============================================================
-   RESPONSIVO — SERVIÇOS
-============================================================ */
-
-@media (max-width: 800px) {
-
-    .service {
-        width: calc(100% - 56px);
-
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-
-        margin-bottom: 70px;
-    }
-
-
-    .service h3 {
-        margin: 0 0 25px;
-
-        font-size: 32px;
-
-        text-align: center;
-    }
-
-
-    .service p {
-        margin: 0 auto 30px;
-
-        font-size: 18px;
-
-        text-align: center;
-    }
-
-
-    .service .text-link {
-        margin: 0 auto;
-
-        display: flex;
-    }
-
-
-    .service .rounded-image {
-        width: 100%;
-
-        height: 350px;
-
-        margin: 0 auto;
-    }
-
-}
-
-/* ============================================================
-   NOTÍCIAS E NOVIDADES — INSTAGRAM
-============================================================ */
+   INSTAGRAM / PROJETOS
+   ============================================================ */
 
 .projects {
+
     padding-top: 55px;
 }
 
 
-/* SUBTÍTULO */
+.projects > h3 {
 
-.projects h3 {
     margin: 80px 0 45px;
 
     text-align: center;
@@ -909,9 +822,8 @@ a {
 }
 
 
-/* ÁREA PRINCIPAL */
-
 .instagram-section {
+
     width: min(100%, 1100px);
 
     margin: 0 auto;
@@ -920,15 +832,14 @@ a {
 
     border-radius: 25px;
 
-    background: #fef9f6;
+    background: var(--cream);
 
     border: 1px solid #eee;
 }
 
 
-/* PERFIL */
-
 .instagram-profile {
+
     display: flex;
 
     align-items: center;
@@ -946,6 +857,7 @@ a {
 
 
 .instagram-profile-info {
+
     display: flex;
 
     align-items: center;
@@ -954,11 +866,9 @@ a {
 }
 
 
-/* FOTO DO PERFIL */
-
 .instagram-profile-photo {
-    width: 85px;
 
+    width: 85px;
     height: 85px;
 
     object-fit: cover;
@@ -971,9 +881,8 @@ a {
 }
 
 
-/* NOME */
-
 .instagram-profile h3 {
+
     margin: 0 0 8px;
 
     font-size: 22px;
@@ -982,9 +891,8 @@ a {
 }
 
 
-/* DESCRIÇÃO */
-
 .instagram-profile p {
+
     margin: 0;
 
     color: var(--gray);
@@ -995,19 +903,16 @@ a {
 }
 
 
-/* BOTÃO */
-
 .instagram-follow {
+
     flex-shrink: 0;
 
     min-width: 190px;
-
     height: 52px;
 
     display: inline-flex;
 
     align-items: center;
-
     justify-content: center;
 
     padding: 0 25px;
@@ -1022,107 +927,51 @@ a {
 
     font-weight: 700;
 
-    transition: background .2s, transform .2s;
+    transition:
+        background .2s ease,
+        transform .2s ease;
 }
 
 
 .instagram-follow:hover {
-    background: #e01414;
+
+    background: var(--red-hover);
 
     transform: translateY(-2px);
 }
 
 
-/* ÁREA DO FEED */
-
 .instagram-feed {
+
     width: 100%;
 
-    min-height: 350px;
+    min-height: 250px;
 
     overflow: hidden;
 }
 
 
 /* ============================================================
-   RESPONSIVO — INSTAGRAM
-============================================================ */
-
-@media (max-width: 800px) {
-
-    .instagram-section {
-        width: calc(100% - 32px);
-
-        padding: 25px 20px;
-    }
-
-
-    .instagram-profile {
-        flex-direction: column;
-
-        align-items: center;
-
-        text-align: center;
-    }
-
-
-    .instagram-profile-info {
-        flex-direction: column;
-
-        text-align: center;
-    }
-
-
-    .instagram-profile h3 {
-        text-align: center;
-    }
-
-
-    .instagram-follow {
-        width: 100%;
-    }
-
-
-    .projects h3 {
-        margin: 55px 0 35px;
-
-        font-size: 28px;
-    }
-
-}
-
-
-/* ============================================================
    DEPOIMENTOS
-============================================================ */
+   ============================================================ */
 
 .testimonials {
 
     width: 100%;
 
+    max-width: none;
+
     padding-top: 90px;
 
     padding-bottom: 100px;
-
 }
 
-
-/* ============================================================
-   TÍTULO
-============================================================ */
 
 .testimonials .center-title {
 
     margin-bottom: 70px;
-
-    text-align: center;
-
 }
 
-
-/* ============================================================
-   GRADE DOS VÍDEOS
-============================================================ */
 
 .testimonial-grid {
 
@@ -1132,18 +981,12 @@ a {
 
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
     gap: 45px;
-
-    align-items: start;
-
 }
 
-
-/* ============================================================
-   CARD DO VÍDEO
-============================================================ */
 
 .video-card {
 
@@ -1158,18 +1001,12 @@ a {
     background: #000;
 
     position: relative;
-
 }
 
-
-/* ============================================================
-   VÍDEO
-============================================================ */
 
 .video-card video {
 
     width: 100%;
-
     height: 100%;
 
     display: block;
@@ -1179,66 +1016,894 @@ a {
     object-position: center;
 
     background: #000;
-
 }
 
 
 /* ============================================================
-   RESPONSIVO — TABLET
-============================================================ */
+   TRANSPARÊNCIA
+   ============================================================ */
 
-@media (max-width: 900px) {
+.transparency {
 
-    .testimonial-grid {
+    width: min(
+        var(--max-width),
+        calc(100% - 80px)
+    );
+
+    padding-top: 100px;
+
+    padding-bottom: 80px;
+}
+
+
+.transparency-grid {
+
+    width: min(100%, 1000px);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 100px;
+
+    align-items: start;
+}
+
+
+.transparency-item {
+
+    text-align: left;
+}
+
+
+.transparency-item h3 {
+
+    margin: 0 0 28px;
+
+    color: #999;
+
+    font-size: 24px;
+
+    line-height: 1.2;
+
+    font-weight: 600;
+}
+
+
+.transparency-item h4 {
+
+    margin: 0 0 20px;
+
+    color: #171717;
+
+    font-size: 17px;
+
+    line-height: 1.4;
+
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   BOTÃO VERMELHO
+   ============================================================ */
+
+.red-button {
+
+    min-width: 190px;
+
+    min-height: 55px;
+
+    padding: 14px 28px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid var(--red);
+
+    border-radius: 18px;
+
+    background: var(--red);
+
+    color: #fff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        background-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+
+.red-button:hover {
+
+    background: #fff;
+
+    color: var(--red);
+
+    transform: translateY(-2px);
+}
+
+
+/* BOTÃO SEM LINK */
+
+.disabled-button {
+
+    opacity: .45;
+
+    cursor: default;
+
+    pointer-events: none;
+}
+
+
+/* TEXTO DA TRANSPARÊNCIA */
+
+.transparency-text {
+
+    width: 100%;
+
+    max-width: 620px;
+
+    margin: 65px auto 0;
+
+    color: var(--gray);
+
+    text-align: center;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   CONTATO
+   ============================================================ */
+
+.contact {
+
+    width: min(
+        var(--max-width),
+        calc(100% - 80px)
+    );
+
+    padding-top: 90px;
+
+    padding-bottom: 140px;
+
+    text-align: center;
+}
+
+
+.contact .center-title {
+
+    margin-bottom: 55px;
+}
+
+
+.contact-links {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 22px;
+}
+
+
+/* BOTÕES DO CONTATO */
+
+.contact-links .red-button {
+
+    width: 240px;
+
+    min-height: 58px;
+
+    font-size: 18px;
+}
+
+
+/* DOAÇÕES */
+
+.contact-links .donations {
+
+    width: 280px;
+
+    min-height: 62px;
+
+    margin-top: 12px;
+
+    font-size: 20px;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+footer {
+
+    width: 100%;
+
+    min-height: 1px;
+
+    margin: 0;
+    padding: 0;
+
+    background: #fff;
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE — TABLET
+   ============================================================ */
+
+@media (max-width: 1000px) {
+
+
+    .header {
+
+        padding: 20px 5%;
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+
+    .nav {
+
+        justify-content: center;
+
+        gap: 20px;
+
+        text-align: center;
+    }
+
+
+    .hero-content {
+
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+
+
+    .hero h1 {
+
+        font-size: 52px;
+    }
+
+
+    .about {
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 30px;
+    }
+
+
+    .about h2 {
+
+        font-size: 42px;
+    }
+
+
+    .service {
 
         width: calc(100% - 60px);
 
-        gap: 25px;
-
+        gap: 40px;
     }
 
 
-    .video-card {
+    .service h3 {
 
-        height: 430px;
+        font-size: 40px;
+    }
 
-        border-radius: 26px;
 
+    .pillar-grid {
+
+        gap: 25px;
+    }
+
+
+    .pillar p {
+
+        font-size: 18px;
+    }
+
+
+    .team-card {
+
+        flex-basis: 220px;
+
+        width: 220px;
+    }
+
+
+    .team-photo {
+
+        width: 220px;
+        height: 220px;
+    }
+
+
+    .team-track {
+
+        gap: 45px;
     }
 
 }
 
 
 /* ============================================================
-   RESPONSIVO — CELULAR
-============================================================ */
+   RESPONSIVIDADE — CELULAR
+   ============================================================ */
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
-    .testimonials {
 
-        padding-top: 70px;
+    /* --------------------------------------------------------
+       GERAL
+       -------------------------------------------------------- */
 
-        padding-bottom: 70px;
+    body {
 
+        width: 100%;
+
+        overflow-x: hidden;
     }
 
 
-    .testimonials .center-title {
+    .section {
+
+        width: calc(100% - 32px);
+
+        padding-top: 65px;
+        padding-bottom: 65px;
+    }
+
+
+    /* --------------------------------------------------------
+       CABEÇALHO
+       -------------------------------------------------------- */
+
+    .header {
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 15px 16px 20px;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .brand img {
+
+        width: 75px;
+        height: 75px;
+    }
+
+
+    .nav {
+
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        gap: 10px 15px;
+
+        flex-wrap: wrap;
+
+        text-align: center;
+
+        font-size: 13px;
+    }
+
+
+    .nav a {
+
+        white-space: normal;
+    }
+
+
+    /* --------------------------------------------------------
+       HERO
+       -------------------------------------------------------- */
+
+    .hero {
+
+        min-height: 560px;
+
+        height: auto;
+    }
+
+
+    .hero-overlay {
+
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(255,255,255,.82),
+                rgba(255,255,255,.42)
+            );
+    }
+
+
+    .hero-content {
+
+        padding: 55px 24px 60px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .hero h1 {
+
+        max-width: 100%;
+
+        font-size: clamp(
+            36px,
+            10vw,
+            48px
+        );
+
+        line-height: 1.05;
+    }
+
+
+    .hero p {
+
+        max-width: 100%;
+
+        font-size: 15px;
+    }
+
+
+    .button {
+
+        width: 165px;
+
+        height: 58px;
+
+        border-radius: 20px;
+
+        font-size: 17px;
+    }
+
+
+    /* --------------------------------------------------------
+       ESTATÍSTICAS
+       -------------------------------------------------------- */
+
+    .stats {
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 25px 24px 35px;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 25px;
+
+        align-items: start;
+    }
+
+
+    .stats strong {
+
+        font-size: 30px;
+    }
+
+
+    .stats p {
+
+        margin-top: 5px;
+
+        font-size: 12px;
+    }
+
+
+    /* --------------------------------------------------------
+       TÍTULOS
+       -------------------------------------------------------- */
+
+    .center-title {
+
+        margin-bottom: 40px;
+
+        font-size: 31px;
+    }
+
+
+    /* --------------------------------------------------------
+       QUEM SOMOS
+       -------------------------------------------------------- */
+
+    .about {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 30px;
+
+        align-items: stretch;
+    }
+
+
+    .about-text {
+
+        width: 100%;
+    }
+
+
+    .about h2 {
+
+        margin: 0 0 25px;
+
+        font-size: 36px;
+
+        line-height: 1.08;
+    }
+
+
+    .about p {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0 0 20px;
+
+        font-size: 15px;
+
+        line-height: 1.6;
+    }
+
+
+    .about .text-link {
+
+        margin-top: 5px;
+    }
+
+
+    .rounded-image {
+
+        width: 100%;
+
+        height: 300px;
+
+        aspect-ratio: auto;
+
+        object-fit: cover;
+    }
+
+
+    /* --------------------------------------------------------
+       PILARES
+       -------------------------------------------------------- */
+
+    .pillar-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+    }
+
+
+    .pillar-icon {
+
+        width: 82px;
+        height: 82px;
+    }
+
+
+    .pillar h3 {
+
+        font-size: 32px;
+    }
+
+
+    .pillar p {
+
+        font-size: 16px;
+
+        line-height: 1.55;
+    }
+
+
+    /* --------------------------------------------------------
+       EQUIPE
+       -------------------------------------------------------- */
+
+    .team {
+
+        width: 100%;
+
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    .team .center-title {
 
         margin-bottom: 45px;
 
+        padding: 0 16px;
+    }
+
+
+    .team-track {
+
+        gap: 25px;
+    }
+
+
+    .team-card {
+
+        flex: 0 0 190px;
+
+        width: 190px;
+    }
+
+
+    .team-photo {
+
+        width: 190px;
+        height: 190px;
+    }
+
+
+    .team-card h3 {
+
+        font-size: 18px;
+
+        margin-top: 16px;
+    }
+
+
+    .team-card p {
+
+        font-size: 13px;
+    }
+
+
+    /* --------------------------------------------------------
+       SERVIÇOS
+       -------------------------------------------------------- */
+
+    .services {
+
+        width: 100%;
+
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    .services .center-title {
+
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+
+    .service {
+
+        width: calc(100% - 32px);
+
+        margin-bottom: 65px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 30px;
+
+        align-items: stretch;
+    }
+
+
+    .service > div {
+
+        width: 100%;
+    }
+
+
+    .service h3 {
+
+        margin: 0 0 22px;
+
+        font-size: 30px;
+
+        line-height: 1.15;
+
+        text-align: center;
+    }
+
+
+    .service p {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0 0 20px;
+
+        font-size: 16px;
+
+        line-height: 1.6;
+
+        text-align: center;
+    }
+
+
+    .service .text-link {
+
+        display: flex;
+
+        margin: 10px auto 0;
+    }
+
+
+    .service .rounded-image {
+
+        width: 100%;
+
+        height: 330px;
+
+        margin: 0;
+    }
+
+
+    /* --------------------------------------------------------
+       PROJETOS / INSTAGRAM
+       -------------------------------------------------------- */
+
+    .projects {
+
+        width: 100%;
+
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+
+    .projects > h3 {
+
+        margin: 45px 0 30px;
+
+        font-size: 27px;
+    }
+
+
+    .instagram-section {
+
+        width: 100%;
+
+        padding: 25px 20px;
+
+        border-radius: 20px;
+    }
+
+
+    .instagram-profile {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 25px;
+
+        text-align: center;
+    }
+
+
+    .instagram-profile-info {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 15px;
+    }
+
+
+    .instagram-profile-photo {
+
+        width: 75px;
+        height: 75px;
+    }
+
+
+    .instagram-profile h3 {
+
+        font-size: 20px;
+
+        text-align: center;
+    }
+
+
+    .instagram-profile p {
+
+        font-size: 14px;
+
+        text-align: center;
+    }
+
+
+    .instagram-follow {
+
+        width: 100%;
+
+        min-width: 0;
+    }
+
+
+    .instagram-feed {
+
+        min-height: 180px;
+    }
+
+
+    /* --------------------------------------------------------
+       DEPOIMENTOS
+       -------------------------------------------------------- */
+
+    .testimonials {
+
+        width: 100%;
+
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
 
     .testimonial-grid {
 
-        width: calc(100% - 40px);
+        width: 100%;
 
         grid-template-columns: 1fr;
 
         gap: 30px;
-
     }
 
 
@@ -1251,7 +1916,128 @@ a {
         margin: 0 auto;
 
         border-radius: 28px;
+    }
 
+
+    /* --------------------------------------------------------
+       TRANSPARÊNCIA
+       -------------------------------------------------------- */
+
+    .transparency {
+
+        width: 100%;
+
+        padding: 65px 24px 60px;
+    }
+
+
+    .transparency .center-title {
+
+        margin-bottom: 45px;
+
+        font-size: 31px;
+    }
+
+
+    .transparency-grid {
+
+        width: 100%;
+
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+
+    .transparency-item {
+
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    .transparency-item h3 {
+
+        margin-bottom: 18px;
+
+        font-size: 21px;
+    }
+
+
+    .transparency-item h4 {
+
+        margin-bottom: 18px;
+
+        font-size: 16px;
+    }
+
+
+    .red-button {
+
+        width: min(100%, 240px);
+
+        min-height: 54px;
+
+        font-size: 16px;
+    }
+
+
+    .transparency-text {
+
+        margin-top: 45px;
+
+        font-size: 14px;
+    }
+
+
+    /* --------------------------------------------------------
+       CONTATO
+       -------------------------------------------------------- */
+
+    .contact {
+
+        width: 100%;
+
+        padding: 65px 24px 90px;
+    }
+
+
+    .contact .center-title {
+
+        margin-bottom: 40px;
+
+        font-size: 31px;
+    }
+
+
+    .contact-links {
+
+        width: 100%;
+
+        gap: 18px;
+    }
+
+
+    .contact-links .red-button {
+
+        width: min(100%, 280px);
+
+        min-height: 56px;
+
+        font-size: 17px;
+    }
+
+
+    .contact-links .donations {
+
+        width: min(100%, 300px);
+
+        min-height: 60px;
+
+        margin-top: 8px;
+
+        font-size: 18px;
     }
 
 }
@@ -1259,262 +2045,97 @@ a {
 
 /* ============================================================
    CELULARES PEQUENOS
-============================================================ */
+   ============================================================ */
 
 @media (max-width: 480px) {
 
-    .testimonial-grid {
 
-        width: calc(100% - 32px);
+    .nav {
 
+        font-size: 12px;
+
+        gap: 9px 12px;
     }
 
 
-    .video-card {
+    .hero {
 
-        width: min(100%, 300px);
-
-        height: 470px;
-
+        min-height: 530px;
     }
 
-}
 
-/* ============================================================
-   TRANSPARÊNCIA
-============================================================ */
+    .hero-content {
 
-.transparency {
-    width: 100%;
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 100px 40px 80px;
-}
-
-
-/* TÍTULO */
-
-.transparency .center-title {
-    margin: 0 0 70px;
-    text-align: center;
-    font-size: 39px;
-    line-height: 1.2;
-    color: #171717;
-}
-
-
-/* ÁREA DOS DOCUMENTOS */
-
-.transparency-grid {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    align-items: start;
-}
-
-
-/* CADA COLUNA */
-
-.transparency-grid > div {
-    text-align: left;
-}
-
-
-/* TÍTULOS DAS COLUNAS */
-
-.transparency-grid h3 {
-    margin: 0 0 28px;
-    color: #999;
-    font-size: 24px;
-    line-height: 1.2;
-    font-weight: 600;
-}
-
-
-/* NOME DOS DOCUMENTOS */
-
-.transparency-grid h4 {
-    margin: 0 0 14px;
-    color: #171717;
-    font-size: 17px;
-    line-height: 1.4;
-    font-weight: 700;
-}
-
-
-/* LINK DOWNLOAD */
-
-.transparency-grid a {
-    display: inline-block;
-    color: #999;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color .2s ease;
-}
-
-
-.transparency-grid a:hover {
-    color: var(--red);
-}
-
-
-/* TEXTO FINAL */
-
-.transparency-text {
-    width: 100%;
-    max-width: 620px;
-    margin: 65px auto 0;
-    color: #555;
-    text-align: center;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-
-/* ============================================================
-   CONTATO
-============================================================ */
-
-.contact {
-    width: 100%;
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 90px 40px 140px;
-    text-align: center;
-}
-
-
-/* TÍTULO */
-
-.contact .center-title {
-    margin: 0 0 55px;
-    text-align: center;
-    font-size: 39px;
-    line-height: 1.2;
-    color: #171717;
-}
-
-
-/* LINKS */
-
-.contact-links {
-    width: 100%;
-    max-width: 650px;
-    margin: 0 auto;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 22px;
-
-    color: #999;
-    font-size: 24px;
-    line-height: 1.3;
-}
-
-
-/* LINKS INDIVIDUAIS */
-
-.contact-links a {
-    display: inline-block;
-    color: #999;
-    text-decoration: none;
-    transition:
-        color .2s ease,
-        transform .2s ease;
-}
-
-
-.contact-links a:hover {
-    color: #777;
-    transform: translateY(-1px);
-}
-
-
-/* DOAÇÕES */
-
-.contact-links .donations {
-    margin-top: 12px;
-    color: #999;
-    font-size: 30px;
-    font-weight: 700;
-}
-
-
-/* HOVER DOAÇÕES */
-
-.contact-links .donations:hover {
-    color: var(--red);
-}
-/* ============================================================
-   RESPONSIVO — EQUIPE
-============================================================ */
-
-@media (max-width: 1200px) {
-
-    .team-card {
-
-        flex-basis: 230px;
-
-        width: 230px;
+        padding:
+            45px
+            20px
+            50px;
     }
 
-    .team-photo {
 
-        width: 230px;
+    .hero h1 {
 
-        height: 230px;
+        font-size: 35px;
     }
 
-    .team-track {
 
-        gap: 50px;
-    }
-}
+    .hero p {
 
-
-/* ============================================================
-   RESPONSIVO — TABLET
-============================================================ */
-
-@media (max-width: 768px) {
-
-    .team .center-title {
-
-        margin-bottom: 50px;
+        font-size: 14px;
     }
 
-    .team-card {
 
-        flex-basis: 190px;
+    .stats {
 
-        width: 190px;
+        grid-template-columns: 1fr 1fr;
+
+        gap: 15px;
+
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    .team-photo {
 
-        width: 190px;
+    .stats strong {
 
-        height: 190px;
+        font-size: 27px;
     }
 
-    .team-track {
 
-        gap: 25px;
+    .stats p {
+
+        font-size: 11px;
     }
-}
 
 
-/* ============================================================
-   RESPONSIVO — CELULAR PEQUENO
-============================================================ */
+    .section {
 
-@media (max-width: 480px) {
+        width: calc(100% - 28px);
+
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+
+    .center-title {
+
+        font-size: 28px;
+
+        margin-bottom: 35px;
+    }
+
+
+    .about h2 {
+
+        font-size: 32px;
+    }
+
+
+    .rounded-image {
+
+        height: 270px;
+    }
+
 
     .team-card {
 
@@ -1523,233 +2144,86 @@ a {
         width: 170px;
     }
 
+
     .team-photo {
 
         width: 170px;
-
         height: 170px;
     }
+
 
     .team-track {
 
         gap: 20px;
     }
-}
 
 
-/* ============================================================
-   RESPONSIVIDADE GERAL — CELULAR
-============================================================ */
-
-@media (max-width: 800px) {
-
-    /* LARGURA */
-
-    .container,
-    .header,
-    .stats {
-
-        width:
-            calc(100% - 32px);
-    }
-
-
-    /* CABEÇALHO */
-
-    .header {
-
-        height: auto;
-
-        padding: 20px 0;
-
-        flex-direction: column;
-
-        gap: 20px;
-    }
-
-
-    /* MENU */
-
-    .nav {
-
-        gap: 16px;
-
-        flex-wrap: wrap;
-
-        justify-content: center;
-
-        font-size: 13px;
-    }
-
-
-    /* HERO */
-
-    .hero {
-
-        height: 520px;
-    }
-
-
-    .hero-content {
-
-        padding: 50px 28px;
-    }
-
-
-    .hero h1 {
-
-        font-size: 42px;
-    }
-
-
-    /* ESTATÍSTICAS */
-
-    .stats {
-
-        gap: 55px;
-
-        padding-bottom: 40px;
-    }
-
-
-    /* COLUNA ÚNICA */
-
-    .about,
-    .service,
-    .pillar-grid,
-    .testimonial-grid,
-    .transparency-grid {
-
-        grid-template-columns: 1fr;
-    }
-
-
-    /* ESPAÇAMENTO */
-
-    .about,
     .service {
 
-        gap: 35px;
+        width: calc(100% - 24px);
     }
 
-
-    /* TÍTULOS */
-
-    .center-title {
-
-        margin-bottom: 45px;
-
-        font-size: 32px;
-    }
-
-
-    /* IMAGENS */
-
-    .rounded-image,
-    .service .rounded-image {
-
-        height: 300px;
-    }
-
-
-    /* SERVIÇOS */
 
     .service h3 {
 
-        margin-left: 28px;
-
-        margin-right: 28px;
-
-        font-size: 30px;
+        font-size: 27px;
     }
 
 
     .service p {
 
-        margin-left: 28px;
-
-        margin-right: 28px;
+        font-size: 15px;
     }
 
 
-    .service .text-link {
+    .service .rounded-image {
 
-        margin-left: 28px;
-
-        margin-right: 28px;
+        height: 290px;
     }
 
 
-    /* PROJETOS */
+    .video-card {
 
-    .projects h3 {
+        width: min(100%, 300px);
 
-        margin: 55px 0;
+        height: 470px;
     }
 
 
-    .instagram-box p {
+    .transparency {
 
-        margin-top: 220px;
+        padding-left: 18px;
+        padding-right: 18px;
     }
 
-/* ============================================================
-   TRANSPARÊNCIA — CELULAR
-============================================================ */
 
-.transparency {
-    padding: 70px 24px 60px;
-}
+    .contact {
 
-.transparency .center-title {
-    margin-bottom: 45px;
-    font-size: 32px;
-}
+        padding-left: 18px;
+        padding-right: 18px;
+    }
 
-.transparency-grid {
-    grid-template-columns: 1fr;
-    gap: 45px;
-    max-width: 500px;
-}
-
-.transparency-grid > div {
-    text-align: center;
-}
-
-.transparency-grid h3 {
-    font-size: 21px;
-}
-
-.transparency-grid h4 {
-    font-size: 16px;
-}
-
-.transparency-text {
-    margin-top: 45px;
-    font-size: 14px;
 }
 
 
 /* ============================================================
-   CONTATO — CELULAR
-============================================================ */
+   ACESSIBILIDADE
+   ============================================================ */
 
-.contact {
-    padding: 70px 24px 100px;
-}
+@media (prefers-reduced-motion: reduce) {
 
-.contact .center-title {
-    margin-bottom: 45px;
-    font-size: 32px;
-}
+    html {
+        scroll-behavior: auto;
+    }
 
-.contact-links {
-    gap: 20px;
-    font-size: 22px;
-}
+    .team-track {
+        animation: none;
+    }
 
-.contact-links .donations {
-    margin-top: 10px;
-    font-size: 27px;
-}
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+
 }
